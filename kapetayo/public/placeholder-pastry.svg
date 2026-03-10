@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <rect width="200" height="200" fill="#f5f5f5" rx="12"/>
+  <g transform="translate(100,80)">
+    <ellipse cx="0" cy="15" rx="35" ry="20" fill="none" stroke="#222" stroke-width="3"/>
+    <path d="M-35,15 L-30,40 Q0,50 30,40 L35,15" fill="none" stroke="#222" stroke-width="3"/>
+    <path d="M-25,-5 Q0,-25 25,-5" fill="none" stroke="#222" stroke-width="3"/>
+  </g>
+  <text x="100" y="150" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#666">Pastry</text>
+</svg>
