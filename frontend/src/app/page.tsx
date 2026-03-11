@@ -17,7 +17,7 @@ export default function HomePage() {
     hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
 
   return (
-    <div className="w-full flex flex-col min-h-screen space-y-8 pb-10">
+    <div className="w-full flex flex-col min-h-screen pb-10">
       {/* Full-width Hero Section */}
       <section className="relative w-full h-[28vh] md:h-[35vh] min-h-[210px]">
         <Image
@@ -44,7 +44,7 @@ export default function HomePage() {
       </section>
 
       {/* Greeting and Quick Actions Container */}
-      <section className="max-w-4xl mx-auto px-4 w-full space-y-6 md:space-y-12">
+      <section className="max-w-4xl mx-auto px-4 w-full space-y-6 md:space-y-12 mt-8">
         <div className="text-center space-y-4 py-4 md:py-8">
           <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold tracking-tight leading-tight">
             {greeting}
@@ -85,7 +85,7 @@ export default function HomePage() {
       </section>
 
       {/* About Business Section - Full-width Black theme */}
-      <section className="w-full bg-[#121212] py-10 md:py-16 border-y border-white/5">
+      <section className="w-full bg-[#121212] py-10 md:py-16 border-y border-white/5 mt-8">
         <div className="max-w-4xl mx-auto px-4 w-full text-center space-y-8">
           <div className="space-y-4">
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white">About Our Business</h2>
@@ -117,7 +117,7 @@ export default function HomePage() {
       </section>
 
       {/* Featured Products - Exactly 3 items, Mobile Carousel (1 per view) */}
-      <section className="max-w-4xl mx-auto px-4 w-full space-y-8 pt-8 pb-10">
+      <section className="max-w-4xl mx-auto px-4 w-full space-y-8 pt-8 pb-10 mt-8">
         <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-center md:text-left">
           Featured Products
         </h2>
@@ -167,7 +167,7 @@ export default function HomePage() {
       {/* Black Footer - Matched to design */}
       <footer className="w-full bg-black py-16 border-t border-white/5">
         <div className="max-w-4xl mx-auto px-4 w-full text-center">
-          <p className="text-zinc-500 text-[10px] md:text-xs tracking-[0.3em] font-medium uppercase font-sans">
+          <p className="text-zinc-500 text-[10px] md:text-xs tracking-[0.3em] font-medium uppercase font-sans whitespace-nowrap">
             © 2026 CATSY COFFEE • BREWED WITH PASSION
           </p>
         </div>

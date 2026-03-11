@@ -17,7 +17,7 @@ export function Navbar() {
     const pathname = usePathname();
 
     return (
-        <header className="hidden md:flex items-center justify-between px-8 py-4 border-b border-white/10 bg-[#121212] backdrop-blur-sm sticky top-0 z-50">
+        <header className="hidden md:flex items-center justify-between px-8 py-4 border-b border-white/10 bg-[#121212] backdrop-blur-sm sticky top-0 z-[1000]">
             <Link href="/" className="flex items-center gap-2 group">
                 <div className="relative h-8 w-8 rounded-full bg-white flex items-center justify-center overflow-hidden transition-transform group-hover:rotate-12">
                     <Image src="/logo.jpg" alt="Catsy Coffee" fill className="object-contain p-0.5" />
