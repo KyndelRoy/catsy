@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   title: "Catsy Coffee — Your Neighborhood Coffee Shop",
   description:
     "Order your favorite coffee, pastries, and meals from Catsy Coffee. Located at 196 Bonifacio St, Tagum, Davao del Norte.",
+  icons: {
+    icon: "/logo.svg",
+  },
 };
 
 export default function RootLayout({
