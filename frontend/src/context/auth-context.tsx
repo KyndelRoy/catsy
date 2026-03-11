@@ -29,7 +29,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             // eslint-disable-next-line react-hooks/set-state-in-effect
             setUser(JSON.parse(stored));
         }
-        // eslint-disable-next-line react-hooks/set-state-in-effect
+         
         setIsLoading(false);
     }, []);
 
