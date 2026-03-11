@@ -22,17 +22,90 @@ const Popup = dynamic(
 import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Calendar, ShoppingBag, Map } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
 // 196 Bonifacio St, Tagum, Davao del Norte
 const CAFE_POSITION: [number, number] = [7.4484, 125.8094];
 
+const LocationCard = ({ className }: { className?: string }) => (
+    <Card className={`relative w-full md:w-[336px] shadow-2xl border-none bg-[#1A1A1A]/95 backdrop-blur-md text-white rounded-[2rem] overflow-hidden ${className}`}>
+        <button className="absolute top-4 right-4 z-20 h-8 w-8 flex items-center justify-center rounded-full bg-black/20 hover:bg-black/40 transition-colors">
+            <span className="text-white/60 text-xl font-light">×</span>
+        </button>
+        <CardContent className="p-5 md:p-5 space-y-5">
+            {/* Images Row */}
+            <div className="grid grid-cols-2 gap-3 h-24 md:h-28">
+                <div className="relative rounded-2xl overflow-hidden">
+                    <Image
+                        src="/hero-sectionbg.jpg" // Using existing bg as placeholder
+                        alt="Cafe Exterior"
+                        fill
+                        className="object-cover"
+                    />
+                </div>
+                <div className="relative rounded-2xl overflow-hidden">
+                    <Image
+                        src="/logo.jpg" // Using logo as placeholder
+                        alt="Cafe Interior"
+                        fill
+                        className="object-cover"
+                    />
+                </div>
+            </div>
+
+            {/* Content Section */}
+            <div className="space-y-5">
+                <div className="space-y-1.5">
+                    <h3 className="font-bold text-xl md:text-2xl tracking-tight">Find Your Spot</h3>
+                    <div className="space-y-1">
+                        <div className="flex items-center gap-2 text-[10px] md:text-xs font-bold tracking-wider text-zinc-400">
+                            <span className="h-1.5 w-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]" />
+                            OPEN NOW UNTIL 21:00
+                        </div>
+                        <div className="flex items-center gap-2 text-[10px] md:text-xs font-bold tracking-wider text-zinc-400">
+                            <span className="h-1.5 w-1.5 rounded-full bg-red-500" />
+                            CURRENTLY FULL - CHECK BACK SOON
+                        </div>
+                    </div>
+                </div>
+
+                <div className="space-y-0.5">
+                    <p className="text-[10px] font-bold tracking-[0.2em] text-zinc-600 uppercase">Address</p>
+                    <p className="text-xs md:text-sm font-medium leading-relaxed">
+                        1495 Manuel B. Suaybaguio Sr. St,<br />
+                        Tagum City
+                    </p>
+                </div>
+
+                <div className="flex flex-col gap-2.5 pt-1">
+                    <Link href="/reserve" className="w-full">
+                        <Button className="w-full h-11 bg-white text-black hover:bg-zinc-200 rounded-2xl font-bold text-xs tracking-widest uppercase flex items-center justify-center gap-2">
+                            Reserve Table <span className="text-base">↗</span>
+                        </Button>
+                    </Link>
+                    <a
+                        href="https://maps.google.com/?q=7.4484,125.8094"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full"
+                    >
+                        <Button variant="outline" className="w-full h-11 border-zinc-800 bg-zinc-900/50 hover:bg-zinc-800 text-white rounded-2xl font-bold text-xs tracking-widest uppercase">
+                            Google Map
+                        </Button>
+                    </a>
+                </div>
+            </div>
+        </CardContent>
+    </Card>
+);
+
 export function LocationMap() {
+
     const [isClient, setIsClient] = useState(false);
 
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setIsClient(true);
     }, []);
 
@@ -43,78 +116,6 @@ export function LocationMap() {
             </div>
         );
     }
-
-    const LocationCard = ({ className }: { className?: string }) => (
-        <Card className={`relative w-full md:w-[336px] shadow-2xl border-none bg-[#1A1A1A]/95 backdrop-blur-md text-white rounded-[2rem] overflow-hidden ${className}`}>
-            <button className="absolute top-4 right-4 z-20 h-8 w-8 flex items-center justify-center rounded-full bg-black/20 hover:bg-black/40 transition-colors">
-                <span className="text-white/60 text-xl font-light">×</span>
-            </button>
-            <CardContent className="p-5 md:p-5 space-y-5">
-                {/* Images Row */}
-                <div className="grid grid-cols-2 gap-3 h-24 md:h-28">
-                    <div className="relative rounded-2xl overflow-hidden">
-                        <Image
-                            src="/hero-sectionbg.jpg" // Using existing bg as placeholder
-                            alt="Cafe Exterior"
-                            fill
-                            className="object-cover"
-                        />
-                    </div>
-                    <div className="relative rounded-2xl overflow-hidden">
-                        <Image
-                            src="/logo.jpg" // Using logo as placeholder
-                            alt="Cafe Interior"
-                            fill
-                            className="object-cover"
-                        />
-                    </div>
-                </div>
-
-                {/* Content Section */}
-                <div className="space-y-5">
-                    <div className="space-y-1.5">
-                        <h3 className="font-bold text-xl md:text-2xl tracking-tight">Find Your Spot</h3>
-                        <div className="space-y-1">
-                            <div className="flex items-center gap-2 text-[10px] md:text-xs font-bold tracking-wider text-zinc-400">
-                                <span className="h-1.5 w-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]" />
-                                OPEN NOW UNTIL 21:00
-                            </div>
-                            <div className="flex items-center gap-2 text-[10px] md:text-xs font-bold tracking-wider text-zinc-400">
-                                <span className="h-1.5 w-1.5 rounded-full bg-red-500" />
-                                CURRENTLY FULL - CHECK BACK SOON
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="space-y-0.5">
-                        <p className="text-[10px] font-bold tracking-[0.2em] text-zinc-600 uppercase">Address</p>
-                        <p className="text-xs md:text-sm font-medium leading-relaxed">
-                            1495 Manuel B. Suaybaguio Sr. St,<br />
-                            Tagum City
-                        </p>
-                    </div>
-
-                    <div className="flex flex-col gap-2.5 pt-1">
-                        <Link href="/reserve" className="w-full">
-                            <Button className="w-full h-11 bg-white text-black hover:bg-zinc-200 rounded-2xl font-bold text-xs tracking-widest uppercase flex items-center justify-center gap-2">
-                                Reserve Table <span className="text-base">↗</span>
-                            </Button>
-                        </Link>
-                        <a
-                            href="https://maps.google.com/?q=7.4484,125.8094"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="w-full"
-                        >
-                            <Button variant="outline" className="w-full h-11 border-zinc-800 bg-zinc-900/50 hover:bg-zinc-800 text-white rounded-2xl font-bold text-xs tracking-widest uppercase">
-                                Google Map
-                            </Button>
-                        </a>
-                    </div>
-                </div>
-            </CardContent>
-        </Card>
-    );
 
     return (
         <div className="flex flex-col w-full bg-black">

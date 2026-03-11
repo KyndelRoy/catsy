@@ -1,0 +1,106 @@
+
+> catsy-coffee@0.1.0 lint
+> eslint
+
+
+/home/roy/Documents/catsy/frontend/src/app/page.tsx
+   9:10  warning  'MapPin' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                @typescript-eslint/no-unused-vars
+   9:18  warning  'ArrowRight' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            @typescript-eslint/no-unused-vars
+  19:5   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/home/roy/Documents/catsy/frontend/src/app/page.tsx:19:5
+  17 |
+  18 |   useEffect(() => {
+> 19 |     setClientHour(new Date().getHours());
+     |     ^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  20 |   }, []);
+  21 |
+  22 |   const greeting = clientHour === null  react-hooks/set-state-in-effect
+
+/home/roy/Documents/catsy/frontend/src/components/home/about-section.tsx
+  10:9  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/home/roy/Documents/catsy/frontend/src/components/home/about-section.tsx:10:9
+   8 |     useEffect(() => {
+   9 |         const currentHour = new Date().getHours();
+> 10 |         setIsOpen(currentHour >= 17 && currentHour < 24);
+     |         ^^^^^^^^^ Avoid calling setState() directly within an effect
+  11 |     }, []);
+  12 |
+  13 |     return (  react-hooks/set-state-in-effect
+
+/home/roy/Documents/catsy/frontend/src/components/home/greeting-section.tsx
+  14:9  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/home/roy/Documents/catsy/frontend/src/components/home/greeting-section.tsx:14:9
+  12 |
+  13 |     useEffect(() => {
+> 14 |         setClientHour(new Date().getHours());
+     |         ^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  15 |     }, []);
+  16 |
+  17 |     const greeting =  react-hooks/set-state-in-effect
+
+/home/roy/Documents/catsy/frontend/src/components/location-map.tsx
+   25:10  warning  'Calendar' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          @typescript-eslint/no-unused-vars
+   25:20  warning  'ShoppingBag' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       @typescript-eslint/no-unused-vars
+   25:33  warning  'Map' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @typescript-eslint/no-unused-vars
+  109:9   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/home/roy/Documents/catsy/frontend/src/components/location-map.tsx:109:9
+  107 |
+  108 |     useEffect(() => {
+> 109 |         setIsClient(true);
+      |         ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  110 |     }, []);
+  111 |
+  112 |     if (!isClient) {  react-hooks/set-state-in-effect
+
+/home/roy/Documents/catsy/frontend/src/components/navbar.tsx
+  6:51  warning  'Coffee' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/roy/Documents/catsy/frontend/src/context/auth-context.tsx
+  29:13  error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/home/roy/Documents/catsy/frontend/src/context/auth-context.tsx:29:13
+  27 |         const stored = localStorage.getItem("catsy_user");
+  28 |         if (stored) {
+> 29 |             setUser(JSON.parse(stored));
+     |             ^^^^^^^ Avoid calling setState() directly within an effect
+  30 |         }
+  31 |         setIsLoading(false);
+  32 |     }, []);  react-hooks/set-state-in-effect
+  50:9   warning  'password' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           @typescript-eslint/no-unused-vars
+
+✖ 12 problems (5 errors, 7 warnings)
+

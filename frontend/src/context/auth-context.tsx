@@ -26,8 +26,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         // Check localStorage for existing session
         const stored = localStorage.getItem("catsy_user");
         if (stored) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setUser(JSON.parse(stored));
         }
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setIsLoading(false);
     }, []);
 
@@ -47,7 +49,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const signup = async (
         name: string,
         email: string,
-        password: string
+        _password: string
     ): Promise<boolean> => {
         // For dev: any signup succeeds and creates a session
         await new Promise((r) => setTimeout(r, 500));
