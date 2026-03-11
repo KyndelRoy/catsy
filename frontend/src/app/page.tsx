@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useState } from "react";
 
 import { useAuth } from "@/context/auth-context";
 import { products } from "@/lib/mock-data";
@@ -12,12 +13,18 @@ import Link from "next/link";
 export default function HomePage() {
   const { user } = useAuth();
   const featured = products.filter((p) => p.featured);
-  const hour = new Date().getHours();
-  const greeting =
-    hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
+  const [clientHour, setClientHour] = useState<number | null>(null);
+
+  useEffect(() => {
+    setClientHour(new Date().getHours());
+  }, []);
+
+  const greeting = clientHour === null
+    ? "Welcome"
+    : clientHour < 12 ? "Good morning" : clientHour < 18 ? "Good afternoon" : "Good evening";
 
   return (
-    <div className="w-full flex flex-col min-h-screen">
+    <div className="w-full flex flex-col min-h-screen bg-[#121212]">
       {/* Full-width Hero Section */}
       <section className="relative w-full h-[28vh] md:h-[35vh] min-h-[210px]">
         <Image
@@ -43,52 +50,53 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Greeting and Quick Actions Container */}
-      <section className="max-w-4xl mx-auto px-4 w-full space-y-6 md:space-y-12 mt-8">
-        <div className="text-center space-y-4 py-4 md:py-8">
-          <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold tracking-tight leading-tight">
-            {greeting}
-            {user ? `, ${user.name}` : ""}!
-          </h1>
-          <p className="text-muted-foreground text-xl md:text-2xl max-w-2xl mx-auto">
-            Welcome to Catsy Coffee
-          </p>
-        </div>
+      {/* Greeting and Quick Actions Container - Dark Theme matched to design */}
+      <section className="w-full bg-[#121212] py-12 md:py-20 border-b border-white/5">
+        <div className="max-w-6xl mx-auto px-4 w-full space-y-8 md:space-y-16">
+          <div className="text-center space-y-6">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-none text-white">
+              {greeting}, {user ? user.name : "Customer"}!
+            </h1>
+            <p className="text-zinc-400 text-xl md:text-3xl lg:text-4xl max-w-4xl mx-auto font-medium tracking-tight">
+              Welcome to Catsy Coffee
+            </p>
+          </div>
 
-        {/* Quick Actions - 2x2 on Mobile, 1-Row on Desktop */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 pt-2 md:pt-4">
-          <Link href="/reserve">
-            <Button variant="outline" className="w-full h-auto py-3 md:py-8 flex flex-row items-center justify-center gap-1 md:gap-3 bg-background shadow-sm hover:shadow-md transition-all">
-              <Calendar className="h-4 w-4 md:h-6 md:w-6 text-primary shrink-0" />
-              <span className="text-[10px] md:text-sm lg:text-base font-semibold whitespace-nowrap">Reserve Table</span>
-            </Button>
-          </Link>
-          <Link href="/order">
-            <Button variant="outline" className="w-full h-auto py-3 md:py-8 flex flex-row items-center justify-center gap-1 md:gap-3 bg-background shadow-sm hover:shadow-md transition-all">
-              <ShoppingBag className="h-4 w-4 md:h-6 md:w-6 text-primary shrink-0" />
-              <span className="text-[10px] md:text-sm lg:text-base font-semibold whitespace-nowrap">Order Pick Up</span>
-            </Button>
-          </Link>
-          <Link href="/menu">
-            <Button variant="outline" className="w-full h-auto py-3 md:py-8 flex flex-row items-center justify-center gap-1 md:gap-3 bg-background shadow-sm hover:shadow-md transition-all">
-              <Coffee className="h-4 w-4 md:h-6 md:w-6 text-primary shrink-0" />
-              <span className="text-[10px] md:text-sm lg:text-base font-semibold whitespace-nowrap">View Products</span>
-            </Button>
-          </Link>
-          <Link href="/rewards">
-            <Button variant="outline" className="w-full h-auto py-3 md:py-8 flex flex-row items-center justify-center gap-1 md:gap-3 bg-background shadow-sm hover:shadow-md transition-all">
-              <Star className="h-4 w-4 md:h-6 md:w-6 text-primary shrink-0" />
-              <span className="text-[10px] md:text-sm lg:text-base font-semibold whitespace-nowrap">Get Rewards</span>
-            </Button>
-          </Link>
+          {/* Quick Actions - 2x2 on Mobile, 1-Row on Desktop */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
+            <Link href="/reserve">
+              <Button variant="outline" className="w-full h-auto py-5 md:py-10 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20 transition-all group rounded-2xl">
+                <Calendar className="h-6 w-6 md:h-8 md:w-8 text-white group-hover:scale-110 transition-transform" />
+                <span className="text-xs md:text-lg font-bold text-white uppercase tracking-widest">Reserve Table</span>
+              </Button>
+            </Link>
+            <Link href="/order">
+              <Button variant="outline" className="w-full h-auto py-5 md:py-10 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20 transition-all group rounded-2xl">
+                <ShoppingBag className="h-6 w-6 md:h-8 md:w-8 text-white group-hover:scale-110 transition-transform" />
+                <span className="text-xs md:text-lg font-bold text-white uppercase tracking-widest">Order Pick Up</span>
+              </Button>
+            </Link>
+            <Link href="/menu">
+              <Button variant="outline" className="w-full h-auto py-5 md:py-10 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20 transition-all group rounded-2xl">
+                <Coffee className="h-6 w-6 md:h-8 md:w-8 text-white group-hover:scale-110 transition-transform" />
+                <span className="text-xs md:text-lg font-bold text-white uppercase tracking-widest">View Products</span>
+              </Button>
+            </Link>
+            <Link href="/rewards">
+              <Button variant="outline" className="w-full h-auto py-5 md:py-10 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20 transition-all group rounded-2xl">
+                <Star className="h-6 w-6 md:h-8 md:w-8 text-white group-hover:scale-110 transition-transform" />
+                <span className="text-xs md:text-lg font-bold text-white uppercase tracking-widest">Get Rewards</span>
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* About Business Section - Full-width Black theme */}
-      <section className="w-full bg-[#121212] py-10 md:py-16 border-y border-white/5 mt-8">
-        <div className="max-w-4xl mx-auto px-4 w-full text-center space-y-8">
+      <section className="w-full bg-[#121212] py-10 md:py-16 border-y border-white/5">
+        <div className="max-w-6xl mx-auto px-4 w-full text-center space-y-8">
           <div className="space-y-4">
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white">About Our Business</h2>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white">Catsy Coffee</h2>
             <p className="text-zinc-400 text-lg md:text-xl lg:text-2xl leading-relaxed max-w-3xl mx-auto">
               The business offers a wide variety of beverages such as iced coffee, frappe, soda and pastries.
               We are dedicated to serving you the finest flavors in a cozy atmosphere.
@@ -116,46 +124,49 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Featured Products - Exactly 3 items, Mobile Carousel (1 per view) */}
-      <section className="max-w-4xl mx-auto px-4 w-full space-y-8 pt-8 pb-10 mt-8">
-        <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-center md:text-left">
-          Featured Products
-        </h2>
-        {/* Responsive Grid/Carousel Container */}
-        <div className="flex md:grid md:grid-cols-3 overflow-x-auto snap-x snap-mandatory gap-4 md:gap-8 pb-6 -mx-4 px-4 md:mx-0 md:px-0 scrollbar-hide">
-          {featured.slice(0, 3).map((product) => (
-            <Card
-              key={product.id}
-              className="flex-none w-[calc(100%-2rem)] md:w-auto snap-center group overflow-hidden hover:shadow-xl transition-all duration-300 border-border aspect-[3/4] flex flex-col bg-background"
-            >
-              <CardContent className="p-0 flex flex-col h-full">
-                {/* Product Image - top half */}
-                <div className="relative flex-[1.5] bg-muted flex items-center justify-center overflow-hidden border-b border-border">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    width={200}
-                    height={200}
-                    className="object-contain transition-transform duration-500 group-hover:scale-110 p-6"
-                  />
-                  <div className="absolute top-2 right-2 bg-background/80 backdrop-blur-sm px-2 py-1 rounded text-xs md:text-sm font-bold shadow-sm">
-                    ₱{product.price.toFixed(0)}
+      {/* Featured Products - Exactly 3 items, Mobile Carousel (1 per view) - White Square Cards on Dark Background */}
+      <section className="w-full bg-[#121212] pt-12 pb-16 border-b border-white/5">
+        <div className="max-w-6xl mx-auto px-4 w-full space-y-10">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-center text-white">
+            Featured Products
+          </h2>
+          {/* Responsive Grid/Carousel Container */}
+          <div className="flex md:grid md:grid-cols-3 overflow-x-auto snap-x snap-mandatory gap-6 md:gap-8 pb-6 -mx-4 px-4 md:mx-0 md:px-0 scrollbar-hide">
+            {featured.slice(0, 3).map((product) => (
+              <Card
+                key={product.id}
+                className="flex-none w-[calc(100%-2rem)] md:w-auto snap-center group overflow-hidden hover:shadow-[0_20px_50px_rgba(255,255,255,0.05)] transition-all duration-300 border-none aspect-square flex flex-col bg-white rounded-3xl"
+              >
+                <CardContent className="p-0 flex flex-col h-full">
+                  {/* Row 1: Product Image */}
+                  <div className="relative flex-[1.4] bg-white flex items-center justify-center overflow-hidden">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      width={220}
+                      height={220}
+                      className="object-contain transition-transform duration-500 group-hover:scale-105 p-6 md:p-8"
+                    />
+                    <div className="absolute top-4 right-4 bg-[#121212] px-3 py-1 rounded-full text-[10px] md:text-xs font-black text-white shadow-xl">
+                      ₱{product.price.toFixed(0)}
+                    </div>
                   </div>
-                </div>
-                {/* Product Name & Button - bottom half */}
-                <div className="p-4 md:p-5 flex-1 flex flex-col justify-between text-center bg-background group-hover:bg-muted/50 transition-colors">
-                  <div className="space-y-1">
-                    <h3 className="font-bold text-base md:text-lg lg:text-xl line-clamp-1">{product.name}</h3>
+
+                  {/* Row 2: Name and Order Button */}
+                  <div className="p-4 md:p-6 flex-none bg-white border-t border-zinc-100 flex items-center justify-between gap-4">
+                    <h3 className="font-black text-sm md:text-lg lg:text-xl text-black truncate flex-1 uppercase tracking-tight">
+                      {product.name}
+                    </h3>
+                    <Link href="/menu">
+                      <Button className="h-10 md:h-12 px-6 bg-[#121212] text-white hover:bg-zinc-800 rounded-xl font-bold text-[10px] md:text-xs tracking-[0.15em] uppercase transition-all active:scale-95 shadow-lg">
+                        Order
+                      </Button>
+                    </Link>
                   </div>
-                  <Link href="/menu" className="w-full">
-                    <Button size="sm" className="w-full h-10 md:h-12 text-xs md:text-sm gap-2 uppercase tracking-widest font-bold">
-                      Order <ArrowRight className="h-4 w-4" />
-                    </Button>
-                  </Link>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -166,7 +177,7 @@ export default function HomePage() {
 
       {/* Black Footer - Matched to design */}
       <footer className="w-full bg-black py-12 md:py-16 pb-28 md:pb-16 border-t border-white/5">
-        <div className="max-w-4xl mx-auto px-4 w-full text-center">
+        <div className="max-w-6xl mx-auto px-4 w-full text-center">
           <p className="text-zinc-500 text-[10px] md:text-sm tracking-[0.3em] font-medium uppercase font-sans whitespace-nowrap overflow-hidden text-ellipsis">
             © 2026 CATSY COFFEE • BREWED WITH PASSION
           </p>
