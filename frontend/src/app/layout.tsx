@@ -29,7 +29,7 @@ export default function RootLayout({
       <body className={`${inter.variable} font-sans antialiased`}>
         <Providers>
           <Navbar />
-          <main className="min-h-screen pb-20 md:pb-0">{children}</main>
+          <main className="min-h-screen">{children}</main>
           <MobileNav />
         </Providers>
       </body>

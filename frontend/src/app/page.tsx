@@ -17,7 +17,7 @@ export default function HomePage() {
     hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
 
   return (
-    <div className="w-full flex flex-col min-h-screen pb-10">
+    <div className="w-full flex flex-col min-h-screen">
       {/* Full-width Hero Section */}
       <section className="relative w-full h-[28vh] md:h-[35vh] min-h-[210px]">
         <Image
@@ -165,9 +165,9 @@ export default function HomePage() {
       </section>
 
       {/* Black Footer - Matched to design */}
-      <footer className="w-full bg-black py-16 border-t border-white/5">
+      <footer className="w-full bg-black py-12 md:py-16 pb-28 md:pb-16 border-t border-white/5">
         <div className="max-w-4xl mx-auto px-4 w-full text-center">
-          <p className="text-zinc-500 text-[10px] md:text-xs tracking-[0.3em] font-medium uppercase font-sans whitespace-nowrap">
+          <p className="text-zinc-500 text-[10px] md:text-sm tracking-[0.3em] font-medium uppercase font-sans whitespace-nowrap overflow-hidden text-ellipsis">
             © 2026 CATSY COFFEE • BREWED WITH PASSION
           </p>
         </div>
