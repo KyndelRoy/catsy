@@ -43,6 +43,7 @@ export const products: Product[] = [
         category: "Coffee",
         description: "Bold espresso diluted with hot water",
         image: "/placeholder-coffee.svg",
+        featured: true,
     },
     {
         id: "3",
@@ -59,6 +60,7 @@ export const products: Product[] = [
         category: "Coffee",
         description: "Espresso topped with steamed milk foam",
         image: "/placeholder-coffee.svg",
+        featured: true,
     },
     {
         id: "5",
@@ -67,6 +69,7 @@ export const products: Product[] = [
         category: "Coffee",
         description: "Espresso, chocolate, and steamed milk",
         image: "/placeholder-coffee.svg",
+        featured: true,
     },
     {
         id: "6",
@@ -75,6 +78,7 @@ export const products: Product[] = [
         category: "Pastries",
         description: "Buttery, flaky French pastry",
         image: "/placeholder-pastry.svg",
+        featured: true,
     },
     {
         id: "7",
