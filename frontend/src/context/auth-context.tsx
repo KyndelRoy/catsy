@@ -24,7 +24,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     useEffect(() => {
         // Check localStorage for existing session
-        const stored = localStorage.getItem("kapetayo_user");
+        const stored = localStorage.getItem("catsy_user");
         if (stored) {
             setUser(JSON.parse(stored));
         }
@@ -38,7 +38,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         if (email === DEV_ACCOUNT.email && password === DEV_ACCOUNT.password) {
             const u = { email: DEV_ACCOUNT.email, name: DEV_ACCOUNT.name };
             setUser(u);
-            localStorage.setItem("kapetayo_user", JSON.stringify(u));
+            localStorage.setItem("catsy_user", JSON.stringify(u));
             return true;
         }
         return false;
@@ -53,13 +53,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         await new Promise((r) => setTimeout(r, 500));
         const u = { email, name };
         setUser(u);
-        localStorage.setItem("kapetayo_user", JSON.stringify(u));
+        localStorage.setItem("catsy_user", JSON.stringify(u));
         return true;
     };
 
     const logout = () => {
         setUser(null);
-        localStorage.removeItem("kapetayo_user");
+        localStorage.removeItem("catsy_user");
     };
 
     return (

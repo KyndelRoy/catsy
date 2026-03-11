@@ -11,9 +11,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Kape Tayo — Your Neighborhood Coffee Shop",
+  title: "Catsy Coffee — Your Neighborhood Coffee Shop",
   description:
-    "Order your favorite coffee, pastries, and meals from Kape Tayo. Located at 196 Bonifacio St, Tagum, Davao del Norte.",
+    "Order your favorite coffee, pastries, and meals from Catsy Coffee. Located at 196 Bonifacio St, Tagum, Davao del Norte.",
 };
 
 export default function RootLayout({

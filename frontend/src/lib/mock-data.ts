@@ -1,4 +1,4 @@
-// Mock data for Kape Tayo cafe app
+// Mock data for Catsy Coffee cafe app
 
 export interface Product {
     id: string;
@@ -166,7 +166,7 @@ export const userStamps = 5;
 
 // Temporary dev account
 export const DEV_ACCOUNT = {
-    email: "dev@kapetayo.com",
-    password: "kapetayo123",
+    email: "dev@catsy.coffee",
+    password: "catsy123",
     name: "Dev User",
 };

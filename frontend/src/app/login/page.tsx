@@ -41,7 +41,7 @@ export default function LoginPage() {
                         <Coffee className="h-10 w-10 mx-auto" />
                         <h1 className="text-2xl font-bold tracking-tight">Welcome Back</h1>
                         <p className="text-sm text-muted-foreground">
-                            Sign in to your Kape Tayo account
+                            Sign in to your Catsy Coffee account
                         </p>
                     </div>
 
@@ -51,7 +51,7 @@ export default function LoginPage() {
                             <Input
                                 id="email"
                                 type="email"
-                                placeholder="dev@kapetayo.com"
+                                placeholder="dev@catsy.coffee"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
@@ -94,7 +94,7 @@ export default function LoginPage() {
                             </Link>
                         </p>
                         <p className="text-xs text-muted-foreground border-t border-border pt-3 mt-3">
-                            Dev credentials: dev@kapetayo.com / kapetayo123
+                            Dev credentials: dev@catsy.coffee / catsy123
                         </p>
                     </div>
                 </CardContent>

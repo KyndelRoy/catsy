@@ -40,7 +40,7 @@ export default function SignupPage() {
                             Create Account
                         </h1>
                         <p className="text-sm text-muted-foreground">
-                            Join Kape Tayo and start earning rewards
+                            Join Catsy Coffee and start earning rewards
                         </p>
                     </div>
 

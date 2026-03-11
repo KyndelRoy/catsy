@@ -50,7 +50,6 @@ export function LocationMap() {
                 zoom={17}
                 scrollWheelZoom={false}
                 style={{ height: "100%", width: "100%" }}
-                // @ts-expect-error react-leaflet SSR typing issue
                 className="z-0"
             >
                 <TileLayer
@@ -59,7 +58,7 @@ export function LocationMap() {
                 />
                 <Marker position={CAFE_POSITION}>
                     <Popup>
-                        <strong>Kape Tayo</strong>
+                        <strong>Catsy Coffee</strong>
                         <br />
                         196 Bonifacio St, Tagum, Davao del Norte
                     </Popup>

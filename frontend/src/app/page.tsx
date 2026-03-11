@@ -26,7 +26,7 @@ export default function HomePage() {
           {user ? `, ${user.name}` : ""}!
         </h1>
         <p className="text-muted-foreground text-lg">
-          Welcome to Kape Tayo
+          Welcome to Catsy Coffee
         </p>
       </section>
 

@@ -103,7 +103,7 @@ export default function AccountPage() {
 
             {/* Dev Info */}
             <p className="text-xs text-muted-foreground text-center">
-                Dev Account: dev@kapetayo.com / kapetayo123
+                Dev Account: dev@catsy.coffee / catsy123
             </p>
         </div>
     );
