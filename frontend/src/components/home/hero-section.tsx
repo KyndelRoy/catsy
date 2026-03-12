@@ -12,10 +12,10 @@ export function HeroSection() {
             />
             <div className="absolute inset-0 bg-black/10" />
             <div className="absolute inset-0 flex items-center justify-center py-6">
-                <div className="relative h-[80%] aspect-square bg-white rounded-2xl shadow-2xl overflow-hidden flex items-center justify-center p-2">
+                <div className="relative h-[120%] aspect-square overflow-hidden flex items-center justify-center">
                     <div className="relative w-full h-full">
                         <Image
-                            src="/logo.jpg"
+                            src="/catsy-logo.png"
                             alt="Catsy Coffee Logo"
                             fill
                             className="object-contain"
