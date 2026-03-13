@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Potta+One&family=Poppins:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Poppins', sans-serif;
+  --font-brand: 'Potta One', cursive;
+  --color-sidebar: #111111;
+  --color-sidebar-hover: #1a1a1a;
+  --color-sidebar-active: #2a2a2a;
+}
+
+:root {
+  --bg-primary: #FFFFFF;
+  --bg-surface: #F9FAFB;
+  --text-primary: #111827;
+  --text-secondary: #6B7280;
+  --border-color: #E5E7EB;
+  --accent: #111111;
+  --accent-hover: #333333;
+}
+
+.dark {
+  --bg-primary: #0F172A;
+  --bg-surface: #1E293B;
+  --text-primary: #F1F5F9;
+  --text-secondary: #94A3B8;
+  --border-color: #334155;
+  --accent: #F1F5F9;
+  --accent-hover: #CBD5E1;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  margin: 0;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+.dark ::-webkit-scrollbar-thumb { background: #475569; }
