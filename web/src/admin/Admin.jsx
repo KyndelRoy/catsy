@@ -45,7 +45,7 @@ const PAGE_COMPONENTS = {
   activity: PageActivity,
 };
 
-export default function CatsyCoffeeAdmin() {
+export default function Admin() {
   const [activePage, setActivePage] = useState("dashboard");
   const [counts, setCounts] = useState({ orders: 0, reservations: 0, inventory: 0 });
   const [user, setUser] = useState({ user_fname: "Catsy", user_sname: "Admin", user_role: "admin" });
