@@ -1,14 +1,8 @@
--- ============================================================
 -- CATSY COFFEE — DATABASE SCHEMA
 -- Supabase / PostgreSQL
 -- Supabase Auth compatible — no stored passwords
--- ============================================================
 
-
--- ============================================================
 -- ENUMS
--- ============================================================
-
 CREATE TYPE user_role           AS ENUM ('customer', 'staff', 'admin');
 CREATE TYPE order_status        AS ENUM ('pending', 'completed', 'failed');
 CREATE TYPE order_type          AS ENUM ('dine-in', 'take-out', 'online');
@@ -29,13 +23,9 @@ CREATE TYPE action_type         AS ENUM (
 );
 CREATE TYPE feedback_category AS ENUM ('Service', 'Food', 'Place');
 
-
--- ============================================================
 -- USERS
 -- auth_id links to Supabase auth.users.id (UUID)
 -- user_password is intentionally removed — Supabase Auth owns it
--- ============================================================
-
 CREATE TABLE users (
   user_id       SERIAL PRIMARY KEY,
   auth_id       UUID UNIQUE NOT NULL,                       -- FK to auth.users.id
@@ -49,11 +39,7 @@ CREATE TABLE users (
   user_created  TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
-
--- ============================================================
 -- CATEGORIES
--- ============================================================
-
 CREATE TABLE categories (
   category_id          SERIAL PRIMARY KEY,
   category_name        VARCHAR(150) NOT NULL,
@@ -62,11 +48,7 @@ CREATE TABLE categories (
   category_created     TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
-
--- ============================================================
 -- PRODUCTS
--- ============================================================
-
 CREATE TABLE products (
   product_id           SERIAL PRIMARY KEY,
   category_id          INT REFERENCES categories(category_id) ON DELETE SET NULL,
@@ -79,11 +61,7 @@ CREATE TABLE products (
   product_created      TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
-
--- ============================================================
 -- RAW MATERIALS INVENTORY
--- ============================================================
-
 CREATE TABLE raw_materials_inventory (
   material_id            SERIAL PRIMARY KEY,
   material_name          VARCHAR(255) NOT NULL,
@@ -93,12 +71,8 @@ CREATE TABLE raw_materials_inventory (
   material_updated       TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
-
--- ============================================================
 -- PRODUCT RECIPE
 -- Maps which raw materials are needed per product and how much
--- ============================================================
-
 CREATE TABLE product_recipe (
   recipe_id         SERIAL PRIMARY KEY,
   product_id        INT NOT NULL REFERENCES products(product_id) ON DELETE CASCADE,
@@ -107,11 +81,7 @@ CREATE TABLE product_recipe (
   UNIQUE (product_id, material_id)
 );
 
-
--- ============================================================
 -- TAX SETTINGS
--- ============================================================
-
 CREATE TABLE tax_settings (
   tax_id             SERIAL PRIMARY KEY,
   tax_name           VARCHAR(255) NOT NULL,
@@ -121,11 +91,8 @@ CREATE TABLE tax_settings (
   tax_updated        TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
-
--- ============================================================
 -- RESERVATIONS
 -- user_id is nullable — allows walk-in / guest reservations
--- ============================================================
 
 CREATE TABLE reservations (
   reservation_id      SERIAL PRIMARY KEY,
@@ -140,12 +107,8 @@ CREATE TABLE reservations (
   reservation_created TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
-
--- ============================================================
 -- ORDERS
 -- order_amount is computed by trigger — do not insert manually
--- ============================================================
-
 CREATE TABLE orders (
   order_id       SERIAL PRIMARY KEY,
   user_id        INT REFERENCES users(user_id) ON DELETE SET NULL,
@@ -156,11 +119,7 @@ CREATE TABLE orders (
   order_amount   DECIMAL(10,2) NOT NULL DEFAULT 0 CHECK (order_amount >= 0)
 );
 
-
--- ============================================================
 -- ORDER ITEMS
--- ============================================================
-
 CREATE TABLE order_items (
   order_item_id       SERIAL PRIMARY KEY,
   order_id            INT NOT NULL REFERENCES orders(order_id) ON DELETE CASCADE,
@@ -169,13 +128,9 @@ CREATE TABLE order_items (
   order_price         DECIMAL(10,2) NOT NULL CHECK (order_price >= 0)
 );
 
-
--- ============================================================
 -- TRANSACTIONS
 -- One transaction per order
 -- claim_code is a unique code given to the customer for points redemption
--- ============================================================
-
 CREATE TABLE transactions (
   transaction_id    SERIAL PRIMARY KEY,
   order_id          INT NOT NULL UNIQUE REFERENCES orders(order_id),
@@ -193,12 +148,8 @@ CREATE TABLE transactions (
   transaction_date  TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
-
--- ============================================================
 -- REWARDS
 -- One row per user — created automatically on user signup via trigger
--- ============================================================
-
 CREATE TABLE rewards (
   reward_id      SERIAL PRIMARY KEY,
   user_id        INT UNIQUE NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,
@@ -207,12 +158,8 @@ CREATE TABLE rewards (
   last_purchase  TIMESTAMPTZ
 );
 
-
--- ============================================================
 -- POINTS CLAIM LOG
 -- Records each time a customer claims points from a transaction
--- ============================================================
-
 CREATE TABLE points_claim_log (
   claim_id       SERIAL PRIMARY KEY,
   transaction_id INT NOT NULL REFERENCES transactions(transaction_id) ON DELETE RESTRICT,
@@ -222,12 +169,8 @@ CREATE TABLE points_claim_log (
   claim_date     TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
-
--- ============================================================
 -- INVENTORY LOGS
 -- Append-only log of every stock change
--- ============================================================
-
 CREATE TABLE inventory_logs (
   inventory_log_id   SERIAL PRIMARY KEY,
   material_id        INT NOT NULL REFERENCES raw_materials_inventory(material_id) ON DELETE RESTRICT,
@@ -238,12 +181,8 @@ CREATE TABLE inventory_logs (
   inventory_log_time TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
-
--- ============================================================
 -- ACTIVITY LOGS
 -- Append-only audit trail of staff/admin actions
--- ============================================================
-
 CREATE TABLE activity_logs (
   activity_id      SERIAL PRIMARY KEY,
   user_id          INT REFERENCES users(user_id) ON DELETE SET NULL,
@@ -252,12 +191,8 @@ CREATE TABLE activity_logs (
   created_at       TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
-
--- ============================================================
 -- FEEDBACKS
 -- Tied to a transaction — one feedback per transaction per user
--- ============================================================
-
 CREATE TABLE feedbacks (
   feedback_id    SERIAL PRIMARY KEY,
   user_id        INT REFERENCES users(user_id) ON DELETE SET NULL,
@@ -269,11 +204,7 @@ CREATE TABLE feedbacks (
   UNIQUE (user_id, transaction_id)
 );
 
-
--- ============================================================
 -- INDEXES
--- ============================================================
-
 CREATE INDEX idx_users_auth_id         ON users(auth_id);
 CREATE INDEX idx_users_email           ON users(user_email);
 CREATE INDEX idx_products_category     ON products(category_id);
@@ -291,10 +222,7 @@ CREATE INDEX idx_inventory_logs_mat    ON inventory_logs(material_id);
 CREATE INDEX idx_activity_logs_user    ON activity_logs(user_id);
 CREATE INDEX idx_points_claim_user     ON points_claim_log(user_id);
 
-
--- ============================================================
 -- TRIGGERS
--- ============================================================
 
 -- ------------------------------------------------------------
 -- TRIGGER 1: Auto-create users row on Supabase Auth signup
