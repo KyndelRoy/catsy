@@ -112,3 +112,28 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+/* Sidebar scrollbar refinements */
+.sidebar-nav {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+.sidebar-nav::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+.sidebar-nav:hover {
+  scrollbar-width: auto;
+  -ms-overflow-style: auto;
+}
+
+.sidebar-nav:hover::-webkit-scrollbar {
+  display: block;
+  width: 5px;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 10px;
+}

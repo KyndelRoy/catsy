@@ -124,7 +124,22 @@ export default function CatsyCoffeeAdmin() {
   return (
     <div style={{ display: "flex", height: "100vh", overflow: "hidden", background: C.bg, color: C.fg, fontFamily: "'Inter', system-ui, sans-serif", fontSize: 14 }}>
       {/* ── SIDEBAR ── */}
-      <nav style={{ width: isSidebarCollapsed ? 68 : 220, flexShrink: 0, display: "flex", flexDirection: "column", overflowY: "auto", overflowX: "hidden", background: C.sidebar, borderRight: `1px solid ${C.border}`, transition: "width 0.3s ease" }}>
+      <nav 
+        className="sidebar-nav"
+        style={{ 
+          width: isSidebarCollapsed ? 0 : 220, 
+          flexShrink: 0, 
+          display: "flex", 
+          flexDirection: "column", 
+          overflowY: "auto", 
+          overflowX: "hidden", 
+          background: C.sidebar, 
+          borderRight: isSidebarCollapsed ? "none" : `1px solid ${C.border}`, 
+          transition: "all 0.3s ease",
+          opacity: isSidebarCollapsed ? 0 : 1,
+          pointerEvents: isSidebarCollapsed ? "none" : "auto"
+        }}
+      >
         {/* Brand */}
         <div style={{ padding: "20px 16px 16px", borderBottom: `1px solid ${C.border}` }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
@@ -208,7 +223,6 @@ export default function CatsyCoffeeAdmin() {
           </button>
           <div>
             <div style={{ fontSize: 15, fontWeight: 600, color: C.fg, letterSpacing: "-0.01em" }}>{PAGE_TITLES[activePage]}</div>
-            <div style={{ fontSize: 11, color: C.muted }}>Admin / {PAGE_TITLES[activePage]}</div>
           </div>
           <div style={{ flex: 1 }} />
           <div style={{ position: "relative" }}>
