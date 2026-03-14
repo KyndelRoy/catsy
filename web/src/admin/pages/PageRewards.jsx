@@ -54,7 +54,7 @@ export function PageRewards() {
       </Table>
 
       <div style={{ marginTop: 32 }}>
-        <h3 style={{ fontSize: 14, fontWeight: 500, color: C.fg, marginBottom: 12 }}>Points Claim Log</h3>
+        <h3 style={{ fontSize: 17.5, fontWeight: 500, color: C.fg, marginBottom: 12 }}>Points Claim Log</h3>
         <Table headers={["Claim ID", "Customer", "Transaction", "Points Earned", "Claim Date"]}>
           {claims.map((c, i) => (
             <tr key={c.claim_id}>
@@ -62,7 +62,7 @@ export function PageRewards() {
               <TD last={i === claims.length - 1} style={{ fontWeight: 500 }}>{getUserName(c.user_id)}</TD>
               <TD last={i === claims.length - 1} style={{ color: C.muted }}>#{c.transaction_id}</TD>
               <TD last={i === claims.length - 1} style={{ color: C.green, fontWeight: 600 }}>+{c.points_earned}</TD>
-              <TD last={i === claims.length - 1} style={{ fontSize: 12, color: C.muted }}>{fmtDateTime(c.claim_date)}</TD>
+              <TD last={i === claims.length - 1} style={{ fontSize: 15, color: C.muted }}>{fmtDateTime(c.claim_date)}</TD>
             </tr>
           ))}
         </Table>

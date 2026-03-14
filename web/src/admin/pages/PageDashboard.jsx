@@ -69,7 +69,7 @@ export function PageDashboard({ onNavigate }) {
               {barHeights.map((h, i) => (
                 <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
                   <div style={{ width: 26, borderRadius: "3px 3px 0 0", background: i === 4 ? "hsl(0,0%,90%)" : "hsl(240,3.7%,25%)", height: h }} />
-                  <span style={{ fontSize: 9, color: C.muted }}>{barDays[i]}</span>
+                  <span style={{ fontSize: 11.25, color: C.muted }}>{barDays[i]}</span>
                 </div>
               ))}
             </div>
@@ -79,7 +79,7 @@ export function PageDashboard({ onNavigate }) {
           <div style={{ padding: 20, display: "flex", flexDirection: "column", gap: 16 }}>
             {[["Dine-In", 58], ["Take-Out", 28], ["Online", 14]].map(([label, pct]) => (
               <div key={label}>
-                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6, fontSize: 13 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6, fontSize: 16.25 }}>
                   <span style={{ color: "hsl(0,0%,88%)" }}>{label}</span>
                   <span style={{ color: C.muted }}>{pct}%</span>
                 </div>

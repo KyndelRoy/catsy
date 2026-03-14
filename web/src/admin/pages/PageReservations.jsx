@@ -35,8 +35,8 @@ export function PageReservations() {
             <TD last={i === filtered.length - 1} style={{ fontWeight: 500 }}>{r.guest_fname} {r.guest_sname}</TD>
             <TD last={i === filtered.length - 1} style={{ color: C.muted }}>{r.guest_contact || "—"}</TD>
             <TD last={i === filtered.length - 1}>{r.guest_quantity} pax</TD>
-            <TD last={i === filtered.length - 1} style={{ fontSize: 12 }}>{fmtDateTime(r.reservation_date)}</TD>
-            <TD last={i === filtered.length - 1} style={{ color: C.muted, fontSize: 12 }}>{r.reservation_notes || "—"}</TD>
+            <TD last={i === filtered.length - 1} style={{ fontSize: 15 }}>{fmtDateTime(r.reservation_date)}</TD>
+            <TD last={i === filtered.length - 1} style={{ color: C.muted, fontSize: 15 }}>{r.reservation_notes || "—"}</TD>
             <TD last={i === filtered.length - 1}><Badge variant={r.reservation_status}>{r.reservation_status}</Badge></TD>
             <TD last={i === filtered.length - 1}>
               <div style={{ display: "flex", gap: 6 }}>

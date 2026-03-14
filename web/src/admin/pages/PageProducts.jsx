@@ -80,7 +80,7 @@ export function PageProducts() {
           </div>
           <FormGroup label="Availability">
             <Select><option>Available</option><option>Unavailable</option></Select>
-            <span style={{ fontSize: 11, color: C.muted, marginTop: 2 }}>Controls whether this item appears on the customer menu.</span>
+            <span style={{ fontSize: 13.75, color: C.muted, marginTop: 2 }}>Controls whether this item appears on the customer menu.</span>
           </FormGroup>
         </div>
       </Modal>

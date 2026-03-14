@@ -58,7 +58,7 @@ export function PageInventoryLogs() {
             </TD>
             <TD last={i === filtered.length - 1}>{l.balance_after} {materials.find(m => m.material_id === l.material_id)?.material_unit}</TD>
             <TD last={i === filtered.length - 1} style={{ color: C.muted }}>{getUserName(l.performed_by)}</TD>
-            <TD last={i === filtered.length - 1} style={{ fontSize: 12, color: C.muted }}>{fmtDateTime(l.log_created)}</TD>
+            <TD last={i === filtered.length - 1} style={{ fontSize: 15, color: C.muted }}>{fmtDateTime(l.log_created)}</TD>
           </tr>
         ))}
       </Table>

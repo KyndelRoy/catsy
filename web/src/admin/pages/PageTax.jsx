@@ -45,11 +45,11 @@ export function PageTax() {
       </Modal>
 
       <div style={{ marginTop: 32, padding: 20, borderRadius: 8, background: "hsl(240,3.7%,13%)", border: `1px solid ${C.border}` }}>
-        <h3 style={{ fontSize: 14, fontWeight: 500, color: C.fg, marginBottom: 8 }}>Tax Application Logic</h3>
-        <p style={{ fontSize: 13, color: C.muted, lineHeight: 1.5, marginBottom: 12 }}>
+        <h3 style={{ fontSize: 17.5, fontWeight: 500, color: C.fg, marginBottom: 8 }}>Tax Application Logic</h3>
+        <p style={{ fontSize: 16.25, color: C.muted, lineHeight: 1.5, marginBottom: 12 }}>
           Active tax rates are automatically applied to the subtotal of all standard orders (Dine-In, Take-Out, Online) to calculate the final `gross_amount` during the checkout and transaction recording phase. If multiple taxes are active, their percentages are summed up combined.
         </p>
-        <p style={{ fontSize: 12, color: "hsl(0,0%,50%)" }}>Note: Changing these rates will only affect new orders and transactions. Past records remain immutable with their historical applied tax rate.</p>
+        <p style={{ fontSize: 15, color: "hsl(0,0%,50%)" }}>Note: Changing these rates will only affect new orders and transactions. Past records remain immutable with their historical applied tax rate.</p>
       </div>
     </div>
   );

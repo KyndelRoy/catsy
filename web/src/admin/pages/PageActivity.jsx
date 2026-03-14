@@ -48,12 +48,12 @@ export function PageActivity() {
               <TD last={i === filtered.length - 1} style={{ fontWeight: 500 }}>{user ? `${user.user_fname} ${user.user_sname}` : "—"}</TD>
               <TD last={i === filtered.length - 1}>{user && <Badge variant={user.user_role}>{user.user_role}</Badge>}</TD>
               <TD last={i === filtered.length - 1}>
-                <code style={{ background: "hsl(240,3.7%,12%)", color: "hsl(0,0%,80%)", padding: "2px 7px", borderRadius: 4, fontSize: 11, fontFamily: "ui-monospace, monospace", border: `1px solid hsl(240,3.7%,20%)` }}>
+                <code style={{ background: "hsl(240,3.7%,12%)", color: "hsl(0,0%,80%)", padding: "2px 7px", borderRadius: 4, fontSize: 13.75, fontFamily: "ui-monospace, monospace", border: `1px solid hsl(240,3.7%,20%)` }}>
                   {l.action_type}
                 </code>
               </TD>
-              <TD last={i === filtered.length - 1} style={{ fontSize: 12, color: C.muted }}>{l.action_details}</TD>
-              <TD last={i === filtered.length - 1} style={{ fontSize: 12, color: C.muted }}>{fmtDateTime(l.log_created)}</TD>
+              <TD last={i === filtered.length - 1} style={{ fontSize: 15, color: C.muted }}>{l.action_details}</TD>
+              <TD last={i === filtered.length - 1} style={{ fontSize: 15, color: C.muted }}>{fmtDateTime(l.log_created)}</TD>
             </tr>
           );
         })}

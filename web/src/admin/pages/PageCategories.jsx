@@ -22,7 +22,7 @@ export function PageCategories() {
             <TD last={i === categories.length - 1} style={{ fontWeight: 500 }}>{c.category_name}</TD>
             <TD last={i === categories.length - 1} style={{ color: C.muted }}>{c.category_description}</TD>
             <TD last={i === categories.length - 1}><Badge variant={c.category_isactive ? "active" : "inactive"}>{c.category_isactive ? "Active" : "Inactive"}</Badge></TD>
-            <TD last={i === categories.length - 1} style={{ fontSize: 12, color: C.muted }}>{fmtDate(c.category_created)}</TD>
+            <TD last={i === categories.length - 1} style={{ fontSize: 15, color: C.muted }}>{fmtDate(c.category_created)}</TD>
             <TD last={i === categories.length - 1}>
               <div style={{ display: "flex", gap: 6 }}>
                 <Btn>Edit</Btn>

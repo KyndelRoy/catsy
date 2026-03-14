@@ -42,7 +42,7 @@ export function PageRecipes() {
               <div key={ing.recipe_id} style={{
                 display: "flex", justifyContent: "space-between", alignItems: "center",
                 padding: "10px 20px", borderBottom: i < p.ingredients.length - 1 ? `1px solid hsl(240,3.7%,12%)` : "none",
-                fontSize: 13,
+                fontSize: 16.25,
               }}>
                 <span style={{ fontWeight: 500, color: "hsl(0,0%,88%)" }}>{ing.material?.material_name || "Unknown"}</span>
                 <span style={{ color: C.muted }}>{ing.quantity_required} {ing.material?.material_unit || ""}</span>

@@ -63,7 +63,7 @@ export function PageOrders() {
             <TD last={i === filtered.length - 1}>{o.user_id ? getUserName(o.user_id) : <span style={{ color: C.muted }}>—</span>}</TD>
             <TD last={i === filtered.length - 1} style={{ color: C.muted }}>{o.reservation_id ? `#RES-${o.reservation_id}` : "—"}</TD>
             <TD last={i === filtered.length - 1}><Badge variant={o.order_type}>{o.order_type.replace("-", " ")}</Badge></TD>
-            <TD last={i === filtered.length - 1} style={{ fontSize: 12, color: C.muted }}>{fmtDateTime(o.order_date)}</TD>
+            <TD last={i === filtered.length - 1} style={{ fontSize: 15, color: C.muted }}>{fmtDateTime(o.order_date)}</TD>
             <TD last={i === filtered.length - 1} style={{ fontWeight: 500 }}>{fmtPeso(o.order_amount)}</TD>
             <TD last={i === filtered.length - 1}><Badge variant={o.order_status}>{o.order_status}</Badge></TD>
             <TD last={i === filtered.length - 1}>

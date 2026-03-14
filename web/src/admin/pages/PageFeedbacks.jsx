@@ -56,7 +56,7 @@ export function PageFeedbacks() {
               </div>
             </TD>
             <TD last={i === filtered.length - 1} style={{ maxWidth: 300, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", color: C.muted }}>{f.comments}</TD>
-            <TD last={i === filtered.length - 1} style={{ fontSize: 12, color: C.muted }}>{fmtDate(f.feedback_date)}</TD>
+            <TD last={i === filtered.length - 1} style={{ fontSize: 15, color: C.muted }}>{fmtDate(f.feedback_date)}</TD>
             <TD last={i === filtered.length - 1}>
               <Btn>Read</Btn>
             </TD>

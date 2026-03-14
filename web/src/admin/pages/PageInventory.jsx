@@ -18,7 +18,7 @@ export function PageInventory() {
     <div>
       <PageHeader title="Raw Materials" subtitle="Track inventory levels and reorder thresholds" action="Add Material" onAction={() => setModal(true)} />
       {lowCount > 0 && (
-        <div style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "12px 16px", borderRadius: 8, border: `1px solid ${C.yellowBorder}`, background: C.yellowBg, color: C.yellow, fontSize: 13, marginBottom: 16 }}>
+        <div style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "12px 16px", borderRadius: 8, border: `1px solid ${C.yellowBorder}`, background: C.yellowBg, color: C.yellow, fontSize: 16.25, marginBottom: 16 }}>
           <Icon name="warning" size={15} style={{ flexShrink: 0, marginTop: 1 }} />
           <span>{lowCount} material{lowCount > 1 ? "s are" : " is"} below their reorder level. Please restock soon.</span>
         </div>

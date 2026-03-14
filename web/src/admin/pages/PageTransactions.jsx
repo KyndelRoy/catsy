@@ -39,7 +39,7 @@ export function PageTransactions() {
             <TD last={i === filtered.length - 1} style={{ textTransform: "capitalize" }}>{t.payment_method}</TD>
             <TD last={i === filtered.length - 1} style={{ color: C.green, fontWeight: 500 }}>+{t.potential_points}</TD>
             <TD last={i === filtered.length - 1}><Badge variant={t.points_is_claimed ? "active" : "inactive"}>{t.points_is_claimed ? "Yes" : "No"}</Badge></TD>
-            <TD last={i === filtered.length - 1} style={{ fontSize: 12, color: C.muted }}>{fmtDateTime(t.transaction_date)}</TD>
+            <TD last={i === filtered.length - 1} style={{ fontSize: 15, color: C.muted }}>{fmtDateTime(t.transaction_date)}</TD>
           </tr>
         ))}
       </Table>

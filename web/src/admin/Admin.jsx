@@ -122,19 +122,19 @@ export default function CatsyCoffeeAdmin() {
   const ActivePage = PAGE_COMPONENTS[activePage];
 
   return (
-    <div style={{ display: "flex", height: "100vh", overflow: "hidden", background: C.bg, color: C.fg, fontFamily: "'Inter', system-ui, sans-serif", fontSize: 14 }}>
+    <div style={{ display: "flex", height: "100vh", overflow: "hidden", background: C.bg, color: C.fg, fontFamily: "'Inter', system-ui, sans-serif", fontSize: 17.5 }}>
       {/* ── SIDEBAR ── */}
-      <nav 
+      <nav
         className="sidebar-nav"
-        style={{ 
-          width: isSidebarCollapsed ? 0 : 220, 
-          flexShrink: 0, 
-          display: "flex", 
-          flexDirection: "column", 
-          overflowY: "auto", 
-          overflowX: "hidden", 
-          background: C.sidebar, 
-          borderRight: isSidebarCollapsed ? "none" : `1px solid ${C.border}`, 
+        style={{
+          width: isSidebarCollapsed ? 0 : 220,
+          flexShrink: 0,
+          display: "flex",
+          flexDirection: "column",
+          overflowY: "auto",
+          overflowX: "hidden",
+          background: C.sidebar,
+          borderRight: isSidebarCollapsed ? "none" : `1px solid ${C.border}`,
           transition: "all 0.3s ease",
           opacity: isSidebarCollapsed ? 0 : 1,
           pointerEvents: isSidebarCollapsed ? "none" : "auto"
@@ -143,11 +143,11 @@ export default function CatsyCoffeeAdmin() {
         {/* Brand */}
         <div style={{ padding: "20px 16px 16px", borderBottom: `1px solid ${C.border}` }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <div style={{ width: 28, height: 28, background: C.fg, borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: 14 }}><Icon name="coffee" size={15} color="hsl(240,5.9%,10%)" /></div>
+            <div style={{ width: 28, height: 28, background: C.fg, borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: 17.5 }}><Icon name="coffee" size={15} color="hsl(240,5.9%,10%)" /></div>
             {!isSidebarCollapsed && (
               <div>
-                <div style={{ fontSize: 14, fontWeight: 700, color: C.fg, letterSpacing: "-0.01em" }}>Catsy Coffee</div>
-                <div style={{ fontSize: 9, textTransform: "uppercase", letterSpacing: "0.1em", color: "hsl(240,5%,40%)", marginTop: 1 }}>Admin Panel</div>
+                <div style={{ fontSize: 17.5, fontWeight: 700, color: C.fg, letterSpacing: "-0.01em" }}>Catsy Coffee</div>
+                <div style={{ fontSize: 11.25, textTransform: "uppercase", letterSpacing: "0.1em", color: "hsl(240,5%,40%)", marginTop: 1 }}>Admin Panel</div>
               </div>
             )}
           </div>
@@ -157,7 +157,7 @@ export default function CatsyCoffeeAdmin() {
         <div style={{ paddingTop: 12, flex: 1 }}>
           {NAV_SECTIONS.map(section => (
             <div key={section.label} style={{ paddingTop: 4 }}>
-              <div style={{ padding: "12px 16px 6px", fontSize: 9, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "hsl(240,5%,35%)", textAlign: isSidebarCollapsed ? "center" : "left" }}>
+              <div style={{ padding: "12px 16px 6px", fontSize: 11.25, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "hsl(240,5%,35%)", textAlign: isSidebarCollapsed ? "center" : "left" }}>
                 {isSidebarCollapsed ? "•••" : section.label}
               </div>
               {section.items.map(item => {
@@ -167,7 +167,7 @@ export default function CatsyCoffeeAdmin() {
                     onClick={() => setActivePage(item.id)}
                     style={{
                       display: "flex", alignItems: "center", gap: 10,
-                      padding: "8px 16px", fontSize: 13, fontWeight: isActive ? 500 : 400,
+                      padding: "8px 16px", fontSize: 16.25, fontWeight: isActive ? 500 : 400,
                       color: isActive ? C.fg : C.muted,
                       cursor: "pointer",
                       borderLeft: `2px solid ${isActive ? C.fg : "transparent"}`,
@@ -178,12 +178,12 @@ export default function CatsyCoffeeAdmin() {
                     <Icon name={item.icon} size={15} />
                     {!isSidebarCollapsed && item.label}
                     {item.badge > 0 && (
-                      <span style={{ marginLeft: "auto", fontSize: 10, fontWeight: 600, padding: "1px 6px", borderRadius: 9999, background: C.fg, color: "hsl(240,5.9%,10%)" }}>
+                      <span style={{ marginLeft: "auto", fontSize: 12.5, fontWeight: 600, padding: "1px 6px", borderRadius: 9999, background: C.fg, color: "hsl(240,5.9%,10%)" }}>
                         {item.badge}
                       </span>
                     )}
                     {item.badgeDanger > 0 && (
-                      <span style={{ marginLeft: "auto", fontSize: 10, fontWeight: 600, padding: "1px 6px", borderRadius: 9999, background: "hsl(0,72%,35%)", color: "#fff" }}>
+                      <span style={{ marginLeft: "auto", fontSize: 12.5, fontWeight: 600, padding: "1px 6px", borderRadius: 9999, background: "hsl(0,72%,35%)", color: "#fff" }}>
                         {item.badgeDanger}
                       </span>
                     )}
@@ -196,18 +196,18 @@ export default function CatsyCoffeeAdmin() {
 
         {/* Footer */}
         <div style={{ padding: "14px 16px", borderTop: `1px solid ${C.border}`, display: "flex", alignItems: "center", gap: 10 }}>
-          <div style={{ width: 30, height: 30, borderRadius: 9999, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: 11, fontWeight: 700, background: "hsl(240,3.7%,18%)", color: "hsl(0,0%,90%)", border: `1px solid hsl(240,3.7%,25%)` }}>
+          <div style={{ width: 30, height: 30, borderRadius: 9999, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: 13.75, fontWeight: 700, background: "hsl(240,3.7%,18%)", color: "hsl(0,0%,90%)", border: `1px solid hsl(240,3.7%,25%)` }}>
             {initials}
           </div>
           {!isSidebarCollapsed && (
             <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{ fontSize: 12, fontWeight: 500, color: "hsl(0,0%,90%)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+              <div style={{ fontSize: 15, fontWeight: 500, color: "hsl(0,0%,90%)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                 {user.user_fname} {user.user_sname}
               </div>
-              <div style={{ fontSize: 10, color: "hsl(240,5%,45%)", textTransform: "capitalize" }}>{user.user_role}</div>
+              <div style={{ fontSize: 12.5, color: "hsl(240,5%,45%)", textTransform: "capitalize" }}>{user.user_role}</div>
             </div>
           )}
-          {!isSidebarCollapsed && <button style={{ background: "transparent", border: "none", cursor: "pointer", color: "hsl(240,5%,40%)", padding: 2, fontSize: 14 }}><Icon name="logout" size={14} /></button>}
+          {!isSidebarCollapsed && <button style={{ background: "transparent", border: "none", cursor: "pointer", color: "hsl(240,5%,40%)", padding: 2, fontSize: 17.5 }}><Icon name="logout" size={14} /></button>}
         </div>
       </nav>
 
@@ -215,21 +215,21 @@ export default function CatsyCoffeeAdmin() {
       <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" }}>
         {/* Topbar */}
         <div style={{ height: 56, background: C.topbar, borderBottom: `1px solid ${C.border}`, display: "flex", alignItems: "center", padding: "0 24px", gap: 12, flexShrink: 0 }}>
-          <button 
+          <button
             onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
             style={{ background: "transparent", border: `1px solid ${C.borderMd}`, borderRadius: 8, padding: 7, cursor: "pointer", color: C.muted, display: "flex", alignItems: "center", justifyContent: "center", transition: "all 0.2s" }}
           >
             <Icon name="menu" size={15} />
           </button>
           <div>
-            <div style={{ fontSize: 15, fontWeight: 600, color: C.fg, letterSpacing: "-0.01em" }}>{PAGE_TITLES[activePage]}</div>
+            <div style={{ fontSize: 18.75, fontWeight: 600, color: C.fg, letterSpacing: "-0.01em" }}>{PAGE_TITLES[activePage]}</div>
           </div>
           <div style={{ flex: 1 }} />
           <div style={{ position: "relative" }}>
-            <span style={{ position: "absolute", left: 10, top: "50%", transform: "translateY(-50%)", fontSize: 12, color: C.muted, pointerEvents: "none" }}><Icon name="search" size={13} /></span>
-            <input style={{ background: "hsl(240,3.7%,10%)", border: `1px solid ${C.borderMd}`, borderRadius: 8, padding: "6px 12px 6px 32px", fontSize: 13, color: "hsl(0,0%,90%)", width: 200, outline: "none", fontFamily: "inherit" }} placeholder="Search…" />
+            <span style={{ position: "absolute", left: 10, top: "50%", transform: "translateY(-50%)", fontSize: 15, color: C.muted, pointerEvents: "none" }}><Icon name="search" size={13} /></span>
+            <input style={{ background: "hsl(240,3.7%,10%)", border: `1px solid ${C.borderMd}`, borderRadius: 8, padding: "6px 12px 6px 32px", fontSize: 16.25, color: "hsl(0,0%,90%)", width: 200, outline: "none", fontFamily: "inherit" }} placeholder="Search…" />
           </div>
-          <button style={{ position: "relative", border: `1px solid ${C.borderMd}`, borderRadius: 8, padding: 7, background: "transparent", cursor: "pointer", color: C.muted, fontSize: 14 }}>
+          <button style={{ position: "relative", border: `1px solid ${C.borderMd}`, borderRadius: 8, padding: 7, background: "transparent", cursor: "pointer", color: C.muted, fontSize: 17.5 }}>
             <Icon name="bell" size={15} />
             <span style={{ position: "absolute", top: 5, right: 5, width: 6, height: 6, background: C.red, borderRadius: 9999, border: `1.5px solid ${C.topbar}` }} />
           </button>

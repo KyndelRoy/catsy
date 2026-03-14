@@ -33,12 +33,12 @@ export function PageUsers() {
           <tr key={u.user_id}>
             <TD last={i === filtered.length - 1} style={{ color: C.muted }}>#{u.user_id}</TD>
             <TD last={i === filtered.length - 1} style={{ fontWeight: 500 }}>{u.user_fname} {u.user_sname}</TD>
-            <TD last={i === filtered.length - 1} style={{ fontSize: 12, color: C.muted }}>{u.user_email}</TD>
+            <TD last={i === filtered.length - 1} style={{ fontSize: 15, color: C.muted }}>{u.user_email}</TD>
             <TD last={i === filtered.length - 1} style={{ color: C.muted }}>{u.user_username}</TD>
-            <TD last={i === filtered.length - 1} style={{ fontSize: 12, color: C.muted }}>{u.user_contact || "—"}</TD>
+            <TD last={i === filtered.length - 1} style={{ fontSize: 15, color: C.muted }}>{u.user_contact || "—"}</TD>
             <TD last={i === filtered.length - 1}><Badge variant={u.user_role}>{u.user_role}</Badge></TD>
             <TD last={i === filtered.length - 1}><Badge variant={u.user_isactive ? "active" : "inactive"}>{u.user_isactive ? "Active" : "Inactive"}</Badge></TD>
-            <TD last={i === filtered.length - 1} style={{ fontSize: 12, color: C.muted }}>{fmtDate(u.user_created)}</TD>
+            <TD last={i === filtered.length - 1} style={{ fontSize: 15, color: C.muted }}>{fmtDate(u.user_created)}</TD>
             <TD last={i === filtered.length - 1}>
               <div style={{ display: "flex", gap: 6 }}>
                 <Btn>{u.user_role === "customer" ? "View" : "Edit"}</Btn>
