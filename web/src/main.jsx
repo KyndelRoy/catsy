@@ -1,13 +1,36 @@
-import { StrictMode, useState } from 'react'
+import { StrictMode, useState, useEffect } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import './index.css'
 import Admin from './admin/Admin.jsx'
 import AdminLogin from './admin/pages/AdminLogin.jsx'
 import Customer from './customer/Customer.jsx'
+import { supabase } from './admin/lib/supabase'
 
 function App() {
-  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
+  const [session, setSession] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Check active session on mount
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      setLoading(false);
+    });
+
+    // Listen for auth changes (login, logout, token refresh)
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  if (loading) {
+    return <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#08060d', color: '#fff' }}>Loading...</div>;
+  }
 
   return (
     <BrowserRouter>
@@ -19,10 +42,10 @@ function App() {
         <Route 
           path="/admin" 
           element={
-            isAdminAuthenticated ? (
+            session ? (
               <Admin />
             ) : (
-              <AdminLogin onLogin={() => setIsAdminAuthenticated(true)} />
+              <AdminLogin onLogin={() => {}} />
             )
           } 
         />

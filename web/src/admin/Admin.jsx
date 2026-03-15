@@ -3,6 +3,7 @@ import { Icon } from "./components/Icon";
 import { Btn } from "./components/ui";
 import { C } from "./lib/theme";
 import { fetchUsers, fetchOrders, fetchReservations, fetchMaterials } from "./lib/api";
+import { supabase } from "./lib/supabase";
 
 // Import all pages
 import { PageDashboard } from "./pages/PageDashboard";
@@ -207,7 +208,14 @@ export default function Admin() {
               <div style={{ fontSize: 12.5, color: "hsl(240,5%,45%)", textTransform: "capitalize" }}>{user.user_role}</div>
             </div>
           )}
-          {!isSidebarCollapsed && <button style={{ background: "transparent", border: "none", cursor: "pointer", color: "hsl(240,5%,40%)", padding: 2, fontSize: 17.5 }}><Icon name="logout" size={14} /></button>}
+          {!isSidebarCollapsed && (
+            <button 
+              onClick={() => supabase.auth.signOut()}
+              style={{ background: "transparent", border: "none", cursor: "pointer", color: "hsl(240,5%,40%)", padding: 2, fontSize: 17.5 }}
+            >
+              <Icon name="logout" size={14} />
+            </button>
+          )}
         </div>
       </nav>
 
