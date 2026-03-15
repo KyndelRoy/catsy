@@ -5,6 +5,8 @@ web/node_modules/
 web/dist/
 web/dist-ssr/
 web/*.local
+architecture.md
+users.txt
 
 # Secrets
 .env
