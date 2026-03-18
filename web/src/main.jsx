@@ -39,15 +39,15 @@ function App() {
         <Route path="/" element={<Customer />} />
 
         {/* Admin Side */}
-        <Route 
-          path="/admin" 
+        <Route
+          path="/admin"
           element={
             session ? (
               <Admin />
             ) : (
-              <AdminLogin onLogin={() => {}} />
+              <AdminLogin onLogin={() => { }} />
             )
-          } 
+          }
         />
 
         {/* Fallback */}

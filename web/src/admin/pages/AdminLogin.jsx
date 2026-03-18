@@ -24,34 +24,34 @@ export default function AdminLogin({ onLogin }) {
     } else if (data.session) {
       onLogin();
     }
-    
+
     setLoading(false);
   };
 
   return (
-    <div style={{ 
-      height: '100vh', 
-      display: 'flex', 
-      alignItems: 'center', 
+    <div style={{
+      height: '100vh',
+      display: 'flex',
+      alignItems: 'center',
       justifyContent: 'center',
       background: C.bg,
       color: C.fg
     }}>
-      <form onSubmit={handleSubmit} style={{ 
-        background: C.sidebar, 
-        padding: '2rem', 
-        borderRadius: '8px', 
+      <form onSubmit={handleSubmit} style={{
+        background: C.sidebar,
+        padding: '2rem',
+        borderRadius: '8px',
         border: `1px solid ${C.border}`,
         width: '320px'
       }}>
         <h2 style={{ marginBottom: '1.5rem', textAlign: 'center' }}>Admin Login</h2>
-        
+
         {errorMsg && (
-          <div style={{ 
-            marginBottom: '1rem', 
-            padding: '0.5rem', 
-            background: C.redBg, 
-            color: C.red, 
+          <div style={{
+            marginBottom: '1rem',
+            padding: '0.5rem',
+            background: C.redBg,
+            color: C.red,
             border: `1px solid ${C.redBorder}`,
             borderRadius: '4px',
             fontSize: '14px',
@@ -63,36 +63,36 @@ export default function AdminLogin({ onLogin }) {
 
         <div style={{ marginBottom: '1rem' }}>
           <label style={{ display: 'block', marginBottom: '0.5rem', color: C.muted }}>Email</label>
-          <input 
-            type="email" 
+          <input
+            type="email"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            style={{ 
-              width: '100%', 
-              padding: '0.5rem', 
-              background: C.input, 
+            style={{
+              width: '100%',
+              padding: '0.5rem',
+              background: C.input,
               border: `1px solid ${C.borderMd}`,
               borderRadius: '4px',
               color: C.fg
-            }} 
+            }}
           />
         </div>
         <div style={{ marginBottom: '1.5rem' }}>
           <label style={{ display: 'block', marginBottom: '0.5rem', color: C.muted }}>Password</label>
-          <input 
-            type="password" 
+          <input
+            type="password"
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            style={{ 
-              width: '100%', 
-              padding: '0.5rem', 
-              background: C.input, 
+            style={{
+              width: '100%',
+              padding: '0.5rem',
+              background: C.input,
               border: `1px solid ${C.borderMd}`,
               borderRadius: '4px',
               color: C.fg
-            }} 
+            }}
           />
         </div>
         <Btn variant="primary" style={{ width: '100%' }}>
